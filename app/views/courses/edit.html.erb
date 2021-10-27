@@ -1,10 +1,10 @@
-<h1>Editing course</h1>
+<h1>Editing Course</h1>
 
 <%= render "form", course: @course %>
 
 <br>
 
 <div>
-  <%= link_to "Show this course", @course %> |
-  <%= link_to "Back to courses", courses_path %>
+  <%= link_to "Show this course", @course, class: "btn btn-primary active" %> |
+  <%= link_to "Back to courses", courses_path, class: "btn btn-primary active" %>
 </div>
