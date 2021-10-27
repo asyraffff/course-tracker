@@ -1,0 +1,28 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <% courses.each do |course| %>
+      <div class="card border-dark">
+        <img src="<%= course.image_url %>" class="card-img-top" alt="<%= course.title %>">
+        <div class="card-body">
+          <h5 class="card-title"><a href="<%= course.url%>"><%= course.title %></a></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <h4 class="list-group-item"><strong><%= course.status %><strong></h4>
+          <% if course.can_show_started? %>
+            <li class="list-group-item"><strong>Started : </strong><%= course.started.strftime('%d-%b-%Y') %></li>
+          <% end %>
+  
+          <% if course.can_show_completed? %>
+            <li class="list-group-item"><strong>Completed : </strong><%= course.completed.strftime('%d-%b-%Y') %></li>
+          <% end %>
+        </ul>
+        <div class="card-body">
+          <%= link_to 'Show', course, class: "card-link" %>
+          <%= link_to 'Edit', edit_course_path(course) , class: "card-link"%>
+          <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+  
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <br/>  

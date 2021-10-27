@@ -1,10 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<%= render @course %>
+<br/> <br/>
 
-<div>
-  <%= link_to "Edit this course", edit_course_path(@course) %> |
-  <%= link_to "Back to courses", courses_path %>
+<div class="card w-50">
+  <div class="card-header">
+    <h3> <%= @course.title %> <h3>
+  </div>
+  <div class="card-body">
+    <img src="<%= @course.image_url %>"/>
 
-  <%= button_to "Destroy this course", course_path(@course), method: :delete %>
+    <h5 class="card-title"><strong>Status : </strong> <%= @course.status %></h5>
+
+    <% if @course.can_show_started? %>
+      <h5 class="card-title"><strong>Started : </strong><%= @course.started %></h5>
+    <% end %>
+
+    <% if @course.can_show_completed? %>
+      <h5 class="card-title"><strong>Completed : </strong><%= @course.completed %></h5>
+    <% end %>
+
+    <a href="<%= @course.url %>" class="btn btn-primary active">Go To Course</a>
+  </div>
 </div>
+
+<br/> <br/>
+<%= link_to 'Edit', edit_course_path(@course) , class: "btn btn-primary active"%>
+<%= link_to 'Back', courses_path , class: "btn btn-primary active"%>

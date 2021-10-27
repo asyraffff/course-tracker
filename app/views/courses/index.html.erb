@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Course</h1>
+<% if @upcoming_courses.length > 0 %>
+  <%= render 'courses/card_section_title', section: "Upcoming Courses" %>
+  <%= render 'courses/course_cards', courses: @upcoming_courses %>
+<% end %>
 
-<div id="courses">
-  <%= render @courses %>
-</div>
+<% if @inprogress_courses.length > 0 %>
+  <%= render 'courses/card_section_title', section: "Inprogress Courses" %>
+  <%= render 'courses/course_cards', courses: @inprogress_courses %>
+<% end %>
 
-<%= link_to "New course", new_course_path %>
+<% if @completed_courses.length > 0 %>
+  <%= render 'courses/card_section_title', section: "Completed Courses" %>
+  <%= render 'courses/course_cards', courses: @completed_courses %>
+<% end %>
+
+
+<br>
+
+<%= link_to 'New Course', new_course_path , class: "btn btn-primary active"%>

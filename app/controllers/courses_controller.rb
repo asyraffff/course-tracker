@@ -3,7 +3,10 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    # @courses = Course.all
+    @upcoming_courses = Course.all.select {|c| c.status.eql?("Upcoming")}
+    @completed_courses = Course.all.select {|c| c.status.eql?("Completed")}
+    @inprogress_courses = Course.all.select {|c| c.status.eql?("In Progress")}
   end
 
   # GET /courses/1 or /courses/1.json
